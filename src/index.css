@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body { @apply bg-bg text-ink; }
+}
+
+@layer utilities {
+  .gradient-bg {
+    background: radial-gradient(1200px 800px at 10% 0%, #0e1330, #070a15 40%, #05070d);
+  }
+  .glass {
+    @apply bg-panel/70 backdrop-blur border border-white/10 shadow-soft rounded-2xl;
+  }
+  .title {
+    @apply text-3xl sm:text-4xl font-extrabold tracking-tight;
+  }
+  .subtitle { @apply text-mute; }
+}
