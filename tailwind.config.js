@@ -5,6 +5,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        naruto: ['"Mochiy Pop One"', 'sans-serif'],
+      },
       colors: {
         bg: '#0b0f19',
         panel: '#0f172a',
@@ -12,8 +16,8 @@ export default {
         ink: '#e5e7eb',
         mute: '#94a3b8',
         brand: {
-          1: '#ff7a18',
-          2: '#f97316',
+          1: '#FF7A00',
+          2: 'FFAB66',
         },
       },
       boxShadow: {

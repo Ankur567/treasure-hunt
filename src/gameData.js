@@ -1,84 +1,149 @@
-import { normalize } from './utils/normalise.js'
+import { normalize } from "./utils/normalise.js";
 
 // Helper to match answers robustly (synonyms + substring match after normalization)
 const matcher = (accepts) => (input) => {
-  const n = normalize(input)
-  return accepts.some(a => n.includes(normalize(a)))
-}
+  const n = normalize(input);
+  return accepts.some((a) => n.includes(normalize(a)));
+};
 
 export const steps = [
   {
     id: 1,
-    title: 'Mission 1 — The Hidden Leaf Awakens',
-    style: 'konoha',
-    clue: 'Every ninja begins under a **leaf**. Seek the quiet green that drinks sunlight; your first ally waits where roots never walk.',
-    accepts: ['plant', 'potted plant', 'pot', 'planter'],
-    gift: ['Naruto Nine Tails', 'Nine Tails Naruto'],
+    title: "The Will of Fire's First Spark",
+    style: "Konoha",
+    clue: "“A shinobi’s journey begins where life quietly thrives. Seek the guardian that stands still, drinking sunlight, where roots never wander.”",
+    giftclue:
+      "“A tribute to the Jinchuriki’s burden—the raging beast sealed within.”",
+    accepts: ["plant", "potted plant", "pot", "planter"],
+    gift: ["Naruto Nine Tails", "Nine Tails Naruto"],
     passcode: "627984",
-    check: matcher(['plant','potted plant','planter','pot','Naruto Nine Tails','Nine Tails Naruto']),
-    hint: 'Think green + window. Where do you water something that is alive but rooted in soil indoors?'
+    check: matcher([
+      "plant",
+      "potted plant",
+      "planter",
+      "pot",
+      "Naruto Nine Tails",
+      "Nine Tails Naruto",
+    ]),
+    hint: "Think green and still.",
   },
   {
     id: 2,
-    title: 'Mission 2 — Ichiraku Initiation',
-    clue: 'Fuel a shinobi’s spirit with swirls like a Rasengan—find the bowl that hosts warm whirlpools.',
-    accepts: ['bowl','ramen bowl','noodle bowl','kitchen bowl'],
-    check: matcher(['bowl','ramen','noodle']),
-    hint: 'Kitchen → look where you’d serve noodles. (Not the pot, the thing you eat from.)'
+    title: "The Chakra Cauldron",
+    style: "Katon",
+    clue: "“Where swirling energy fuels the soul, and warmth gathers in a vessel of sustenance.”",
+    accepts: ["kitchen"],
+    giftclue: "“The legendary meal from Teuchi's stand, served with a smile.”",
+    gift: ["Ramen Bowl", "Ramen"],
+    passcode: "654376",
+    check: matcher(["bowl", "ramen", "noodle", "kitchen"]),
+    hint: "Think of the heart of the home",
   },
   {
     id: 3,
-    title: 'Mission 3 — Tools of the Trade',
-    clue: '“I travel in pairs and guard your steps. I have tongues but never speak. Where kunai would rest by the door, I keep the squad ready to run.”',
-    accepts: ['shoe rack','shoes','shoe cabinet'],
-    check: matcher(['shoe rack','shoes','shoe cabinet']),
-    hint: 'By the entrance. Think pairs with laces and tongues.'
+    style: "Kara",
+    title: "Copy Ninja’s Test",
+    clue: "“I am an archive of identities.”",
+    accepts: ["wardrobe", "closet", "almirah", "cupboard"],
+    gift: ["Tobirama Senju", "Tobirama"],
+    giftclue:
+      "“The master of water who created jutsu to conquer both space and death.”",
+    passcode: "106745",
+    check: matcher([
+      "wardrobe",
+      "Tobirama Senju",
+      "Tobirama",
+      "closet",
+      "almirah",
+      "cupboard",
+    ]),
+    hint: "clothes",
   },
   {
     id: 4,
-    title: 'Mission 4 — Copy Ninja’s Library Test',
-    clue: 'Acrostic (read first letters):\n**B**etween stories and spines I wait,\n**O**ld paper guarding secret fate.\n**O**pen the place of words and lore—\n**K**nowledge points you to the next door.\n**S**eek me where legends always score.',
-    accepts: ['bookshelf','book shelf','books'],
-    check: matcher(['bookshelf','books']),
-    hint: 'Spines, shelves, pages.'
+    style: "Genjutsu",
+    title: "Training Ground Seven",
+    clue: "“Where shadows rest during the day, and the weight of the world is lifted at night.”",
+    gift: ["Speaker", "Bluetooth Speaker"],
+    giftclue:
+      "“A relic that waves genjutsu, which carries on an invisible chakra thread.”",
+    accepts: ["sofa", "couch", "under sofa", "under couch"],
+    check: matcher([
+      "sofa",
+      "couch",
+      "under sofa",
+      "under couch",
+      "speaker",
+      "bluetooth speaker",
+    ]),
+    passcode: "627984",
+    hint: "Think of a place where you relax.",
   },
   {
     id: 5,
-    title: 'Mission 5 — Sharingan Reflection',
-    clue: 'A1Z26 code (A=1…Z=26): **13-9-18-18-15-18**',
-    accepts: ['mirror','dressing table'],
-    check: matcher(['mirror','dressing table']),
-    hint: 'Decode to a common reflective surface in bedrooms/washrooms.'
+    style: "Sharingan",
+    title: "Sharingan Saga",
+    clue: "13-9-18-18-15-18",
+    accepts: ["mirror", "dressing table"],
+    gift: ["Hashirama Senju", "Hashirama"],
+    giftclue:
+      "“A tribute to the First Shadow whose hands could weave life from the earth.”",
+    passcode: "831254",
+    check: matcher([
+      "mirror",
+      "dressing table",
+      "Hashirama Senju",
+      "Hashirama",
+    ]),
+    hint: "Decode to a common reflective surface in bedrooms/washrooms.",
   },
   {
     id: 6,
-    title: 'Mission 6 — Training Ground Seven',
-    clue: 'Caesar cipher (shift each letter back 3): **FRXFK**',
-    accepts: ['couch','sofa'],
-    check: matcher(['couch','sofa']),
-    hint: 'TV time spot. Check under a cushion.'
+    style: "Fuinjutsu",
+    title: "Seal of service",
+    clue: "“The beast mimics the Uzumaki's vortex, not for destruction, but to wash away the traces of a mission, leaving a fresh start in its wake.”",
+    accepts: ["washing machine", "washer", "laundry machine"],
+    gift: ["Naruto Hokage", "Hokage Naruto"],
+    giftclue:
+      "“A tribute to the hero who shouldered the world's hatred and fulfilled his promise, finally earning the title of the Leaf's Shadow.”",
+    passcode: "721654",
+    check: matcher([
+      "washing machine",
+      "washer",
+      "laundry machine",
+      "Naruto Hokage",
+      "Hokage Naruto",
+    ]),
+    hint: "Think of where dirty clothes go to be reborn.",
   },
   {
     id: 7,
-    title: 'Mission 7 — Hokage’s Office → Final Portal',
-    clue: '“Paper, pens, and plans—where a Hokage signs decrees. Seek the desk where missions are approved. Then whisper **Lumos** and find the room that changes to what you need most… where outfits gather.”',
-    accepts: ['desk','study desk','table','office','wardrobe','closet'],
-    // We allow either two-step answer or the final location directly; consider correct if they type desk first, then the final wardrobe.
-    check: (input, ctx) => {
-      const n = normalize(input)
-      const isDesk = ['desk','study desk','table','office'].some(a => n.includes(normalize(a)))
-      const isWardrobe = ['wardrobe','closet','almirah','cupboard'].some(a => n.includes(normalize(a)))
-      if (!ctx) return isDesk || isWardrobe
-      // If player already typed something for step 7, treat any of the two as correct
-      return isDesk || isWardrobe
-    },
-    hint: 'First: your work/study surface. Final magic: the wardrobe/closet (Room of Requirement).'
-  }
-]
+    style: "Rinnegan",
+    title: "Hokage’s Office → Final Portal",
+    clue: "“Paper, pens, and plans—where a Hokage signs decrees. Seek the desk where missions are approved. ”",
+    accepts: ["desk", "study desk", "table"],
+    gift: ["Harry Voldemort Final Battle", "Harry Voldemort Funko"],
+    giftclue:
+      "“A moment frozen in time, proving that love is the one magic that cannot be conquered.”",
+    check: matcher([
+      "desk",
+      "study desk",
+      "table",
+      "Harry Voldemort Final Battle",
+      "Harry Voldemort Funko",
+    ]),
+    hint: "First: your work/study surface.",
+  },
+];
 
 export const finale = {
-  locationLabel: 'Wardrobe / Closet',
-  message: 'From Konoha to Hogwarts — enjoy your Harry Potter Funko!'
-}
+  locationLabel: "Wardrobe / Closet",
+  message: "From Konoha to Hogwarts — enjoy your Harry Potter Funko!",
+};
 
 // speaker - 627984
+// naruto hookage - 721654
+// naruto nine tails - 563214
+// ramen - 654376
+// hashirama - 831254
+// tobirama - 106745

@@ -53,7 +53,6 @@ export default function Step({
     e.preventDefault();
     if (normalize(passcodeInput) === normalize(data.passcode)) {
       setStatus("correct");
-      toast.success(`🎉 Congratulations! You unlocked the passcode!`); // Trigger toast
       setTimeout(() => onSolve(), 350);
     } else {
       setStatus("wrong");
@@ -61,25 +60,29 @@ export default function Step({
   };
 
   return (
-    <section className="glass p-6 mt-4">
-      <ToastContainer /> {/* Add ToastContainer */}
+    <section className="glass p-6 mt-4 border-2 border-orange-400/20">
       <div className="flex items-center gap-2">
-        <span className="text-xl">Step {index + 1}</span>
-        <span className="px-2 py-1 text-xs rounded-full border border-white/10 bg-white/5">
-          Hokage Briefing
+        <span className="text-xl font-naruto text-orange-400">
+          Mission {index + 1}
+        </span>
+        <span className="px-2 py-1 text-xs rounded-full border border-red-400/30 bg-red-500/10 text-red-300">
+          {data.style}
         </span>
       </div>
       <h3 className="text-2xl font-bold mt-1">{data.title}</h3>
       <div className="mt-3">
         <p className="text-ink/90 leading-relaxed whitespace-pre-line">
-          {data.clue}
+          {locationSolved && giftSolved && data.passcode
+            ? "Find the passcode chit in the gift."
+            : locationSolved && !giftSolved
+            ? data.giftclue
+            : data.clue}
         </p>
       </div>
       {!locationSolved ? (
         <form onSubmit={handleLocationSubmit} className="mt-4 space-y-3">
           <label className="block text-sm text-mute">
-            Type the location you think this clue points to (e.g., “mirror”,
-            “bookshelf”).
+            Type the location you think this clue points to
           </label>
           <input
             autoFocus
@@ -94,7 +97,7 @@ export default function Step({
           <div className="flex flex-col sm:flex-row gap-2">
             <button
               type="submit"
-              className="px-4 py-2 rounded-xl bg-brand-1 hover:brightness-110 font-semibold"
+              className="px-4 py-2 rounded-xl bg-brand-1 hover:bg-orange-500 text-black font-semibold"
             >
               Check answer
             </button>
@@ -137,16 +140,16 @@ export default function Step({
           <div className="flex flex-col sm:flex-row gap-2">
             <button
               type="submit"
-              className="px-4 py-2 rounded-xl bg-brand-1 hover:brightness-110 font-semibold"
+              className="px-4 py-2 rounded-xl bg-brand-1 hover:bg-orange-500 text-black font-semibold"
             >
               Check gift
             </button>
           </div>
         </form>
-      ) : index === 0 && data.passcode ? (
+      ) : data.passcode ? (
         <form onSubmit={handlePasscodeSubmit} className="mt-4 space-y-3">
           <label className="block text-sm text-mute">
-            Passcode unlocked! Enter the passcode to proceed to the next step.
+            Type the code you found in the chit
           </label>
           <input
             autoFocus
@@ -160,7 +163,7 @@ export default function Step({
           />
           <button
             type="submit"
-            className="px-4 py-2 rounded-xl bg-brand-1 hover:brightness-110 font-semibold"
+            className="px-4 py-2 rounded-xl bg-brand-1 hover:bg-orange-500 text-black font-semibold"
           >
             Submit Passcode
           </button>
