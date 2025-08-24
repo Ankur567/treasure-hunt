@@ -120,15 +120,13 @@ export const steps = [
     id: 7,
     style: "Rinnegan",
     title: "Hokage’s Office → Final Portal",
-    clue: "“Paper, pens, and plans—where a Hokage signs decrees. Seek the desk where missions are approved. ”",
-    accepts: ["desk", "study desk", "table"],
+    clue: "“Paper, pens, and plans—where a Hokage signs decrees. Seek the place where missions are approved.”",
+    accepts: ["library"],
     gift: ["Harry Voldemort Final Battle", "Harry Voldemort Funko"],
     giftclue:
       "“A moment frozen in time, proving that love is the one magic that cannot be conquered.”",
     check: matcher([
-      "desk",
-      "study desk",
-      "table",
+      "library",
       "Harry Voldemort Final Battle",
       "Harry Voldemort Funko",
     ]),

@@ -43,7 +43,13 @@ export default function Step({
     if (ok) {
       setGiftSolved(true);
       setStatus("idle");
-      toast.success(`🎉 Congratulations! You completed Step ${index + 1}!`); // Trigger toast
+      toast.success(`🎉 Congratulations! You found the gift!`);
+
+      // If there's no passcode, this step is now complete.
+      if (!data.passcode) {
+        setStatus("correct");
+        setTimeout(() => onSolve(), 1200); // Call onSolve to finish the game
+      }
     } else {
       setStatus("wrong");
     }
@@ -169,8 +175,8 @@ export default function Step({
           </button>
         </form>
       ) : (
-        <div className="mt-3 text-sm text-green-300">
-          Correct! On to the next mission…
+        <div className="mt-4 text-lg text-green-300 font-naruto animate-pulse">
+          Thank you for playing! Mission Complete!
         </div>
       )}
       {status === "wrong" && (
