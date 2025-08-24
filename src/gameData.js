@@ -16,7 +16,7 @@ export const steps = [
       "“A tribute to the Jinchuriki’s burden—the raging beast sealed within.”",
     accepts: ["plant", "potted plant", "pot", "planter"],
     gift: ["Naruto Nine Tails", "Nine Tails Naruto"],
-    passcode: "627984",
+    passcode: "563214",
     check: matcher([
       "plant",
       "potted plant",
